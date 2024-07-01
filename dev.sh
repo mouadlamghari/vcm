@@ -1,0 +1,1 @@
+/scripts/waitforit.sh rabbitmq:5672 && npm run start:dev

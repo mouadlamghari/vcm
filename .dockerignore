@@ -1,0 +1,9 @@
+/dist
+test.txt
+get-pip.py
+key-pem
+/venv
+/uploaded
+/localstack
+/dist
+/aws

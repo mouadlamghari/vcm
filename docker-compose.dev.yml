@@ -1,0 +1,57 @@
+version: '4'
+services:
+
+  api:
+      build :
+        context : .
+        dockerfile: dockerfile
+      restart : always
+      ports :
+        - 5002:5002
+      depends_on :
+        - localstack
+        - rabbitmq
+      networks:
+        - goto
+  localstack:
+      image: localstack/localstack:latest
+      ports:
+        - "4566:4566"  
+        - "4571:4571"  
+      environment:
+        - SERVICES=s3,dynamodb,lambda,ec2  
+        - DEBUG=1
+        - DATA_DIR=/var/lib/localstack
+        - TMPDIR=/tmp/localstack_tmp
+        - AWS_DEFAULT_REGION=us-east-1
+        - EDGE_PORT=4566
+        - AWS_ACCESS_KEY_ID=test
+        - AWS_SECRET_ACCESS_KEY=test
+        - PERSISTENCE=1  # Use PERSISTENCE instead of deprecated DATA_DIR
+
+      volumes:
+        - "./localstack:/tmp/localstack"
+        - "/tmp/localstack_tmp:/tmp/localstack_tmp"
+        - "/var/run/docker.sock:/var/run/docker.sock"  # Ensure the Docker socket is mounted
+      networks:
+        - goto
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: 'queue'
+    restart: always
+    ports:
+        - 5672:5672
+        - 15672:15672
+    environment:
+      RABBITMQ_DEFAULT_USER: root
+      RABBITMQ_DEFAULT_PASS: pass
+    volumes:
+        - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+        - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
+    networks:
+        - goto
+networks :
+  goto :
+    driver : bridge
+      
