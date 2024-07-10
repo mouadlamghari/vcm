@@ -3,6 +3,7 @@ import { Document } from 'mongoose';
 
 export type InstanceDocument = Instance & Document;
 
+
 @Schema()
 export class Instance {
   @Prop({ required: true })
