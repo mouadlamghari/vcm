@@ -26,6 +26,7 @@
     "test:e2e": "jest --config ./apps/entrypoint/test/jest-e2e.json"
   },
   "dependencies": {
+        "@nestjs/mongoose": "^10.0.10",
         "@aws-sdk/client-route-53": "^3.614.0",
     "@nestjs/common": "^10.0.0",
     "@nestjs/config": "^3.2.2",
