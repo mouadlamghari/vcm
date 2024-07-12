@@ -22,8 +22,8 @@ export class UploadService {
             {status:406,message:'the vcm config file does not exists'}
             ,HttpStatus.NOT_ACCEPTABLE)
     }
-   console.log(files);
-    Promise.all(files.map(async(file)=>await this.commonService.uplodFile(file)))
+   console.log({files});
+    await Promise.all(files.map(async(file)=>await this.commonService.uplodFile(file)))
     .then((e)=>{
      console.log(e)
 this.rabbitClient.emit('deploy',`uploded/${data?.id}`
