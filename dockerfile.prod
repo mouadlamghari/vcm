@@ -9,10 +9,11 @@ RUN npm i
 COPY . .
 
 COPY ./dev.sh /scripts/dev.sh
+COPY ./prod.sh /scripts/prod.sh
 
 COPY ./waitforit.sh /scripts/waitforit.sh
 
-RUN chmod +x /scripts/dev.sh /scripts/waitforit.sh
+RUN chmod +x /scripts/dev.sh /scripts/prod.sh /scripts/waitforit.sh
 
 RUN npm run build
 
