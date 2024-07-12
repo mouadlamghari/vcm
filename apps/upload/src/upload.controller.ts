@@ -8,6 +8,6 @@ export class UploadController {
 
   @EventPattern('upload')
   getHello(@Payload() data) {
-    return await this.uploadService.upload(data);
+    return  this.uploadService.upload(data);
   }
 }
