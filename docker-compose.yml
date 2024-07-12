@@ -5,7 +5,7 @@ services:
       image : 'mouadl342/vcm'
       container_name : 'api'
       ports :
-        - 80:80
+        - 80:5002
       depends_on :
         - rabbitmq
       networks:
