@@ -6,7 +6,7 @@ import createUpdate from './dto/upload.dto';
 export class EntrypointController {
   constructor(private readonly entrypointService: EntrypointService) {}
 
-  @Post('/deploy/instance/')
+  @Post('deploy/instance')
   deploy(@Body() UploadBody:createUpdate){
     return this.entrypointService.deploy(UploadBody.repoUrl);
   }
