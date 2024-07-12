@@ -8,7 +8,7 @@ export class UploadController {
 
   @EventPattern('upload')
   getHello(@Payload() data) {
-    console.log(data);
-    return this.uploadService.upload(data);
+    console.log('bien',data);
+    return await this.uploadService.upload(data);
   }
 }
