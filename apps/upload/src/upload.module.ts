@@ -15,6 +15,7 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
         durable:true
       }
     }
+    
   }]),CommonModule],
   controllers: [UploadController],
   providers: [UploadService],
