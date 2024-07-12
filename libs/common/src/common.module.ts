@@ -15,7 +15,7 @@ import { Instance, InstanceSchema } from './schema/instance.schema';
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
-        uri: `mongodb+srv://${configService.get<string>('MONGODB_USERNAME')}:${configService.get<string>('MONGODB_PASSWORD')}@${configService.get<string>('MONGODB_CLUSTER')}/${configService.get<string>('MONGODB_DATABASE')}?retryWrites=true&w=majority`,
+        uri: `{configService.get<string>('MONGO_URL')}`,
       }),
       inject: [ConfigService],
     }),
