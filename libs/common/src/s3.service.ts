@@ -6,8 +6,6 @@ export const S3_SERVICE : FactoryProvider<S3>  = {
     provide:'S3',
     useFactory:(configservice:ConfigService)=>{
         const config = {
-            endpoint: configservice.get('AWS_ENDPOINT'),
-            region:configservice.get('REGION'),
             credentials:{
                 secretAccessKey:configservice.get('AWS_SECRET_KEY'),
                 accessKeyId:configservice.get('AWS_ACCESS_KEY')
