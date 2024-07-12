@@ -7,6 +7,9 @@
   "license": "UNLICENSED",
   "scripts": {
     "build": "nest build",
+    "build:entrypoint": "nest build entrypoint",
+    "build:upload": "nest build upload",
+    "build:deploy": "nest build deploy",
     "format": "prettier --write \"apps/**/*.ts\" \"libs/**/*.ts\"",
     "start": "nest start",
     "start:dev": "concurrently -c \"cyan.bold,red.bold\" \"npm:dev-entrypoint\" \"npm:dev-upload\" \"npm:dev-deploy\" ",
