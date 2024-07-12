@@ -53,4 +53,5 @@ jobs:
           cd vcm
           git pull origin main
           docker pull mouadl342/vcm:latest
-          docker compose  up -d --build --pull
+          docker compose pull
+          docker compose  up -d --build 
