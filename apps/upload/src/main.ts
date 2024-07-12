@@ -12,6 +12,7 @@ async function bootstrap() {
           durable: true,
         },
       },
+        logger: ['log', 'error', 'warn', 'debug', 'verbose'], 
   });
   await app.listen();
 }
