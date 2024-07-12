@@ -29,6 +29,7 @@ export class CommonService {
   }
 
   async uplodFile(file: string) {
+    console.log('BUCKET --------------------',this.configService.get('BUCKET'))
     const fileBody = fs.readFileSync(file);
     const item = await this.s3
       .upload({
