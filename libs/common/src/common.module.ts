@@ -14,9 +14,14 @@ import { Instance, InstanceSchema } from './schema/instance.schema';
     MongooseModule.forFeature([{ name: Instance.name, schema: InstanceSchema }]),
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
-      useFactory: async (configService: ConfigService) => ({
+      useFactory: async (configService: ConfigService) => 
+        {
+          console.log('MONGO_URL')
+          return { 
         uri: `{configService.get<string>('MONGO_URL')}`,
-      }),
+          }
+      }
+      ,
       inject: [ConfigService],
     }),
   ],
