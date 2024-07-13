@@ -17,7 +17,7 @@ import { Instance, InstanceSchema } from './schema/instance.schema';
         {
           console.log('MONGO_URL',configService.get<string>('MONGO_URL'))
           return { 
-        uri: `{configService.get<string>('MONGO_URL')}`,
+        uri: `${configService.get<string>('MONGO_URL')}`,
           }
       }
       ,
