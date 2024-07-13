@@ -25,6 +25,7 @@ export class DeployService {
     private configService: ConfigService,
   ) {
     this.route53Client = new Route53Client({
+      region:'us-east-1',
       credentials: {
         accessKeyId: this.configService.get<string>('AWS_ACCESS_KEY_ID'),
         secretAccessKey: this.configService.get<string>(
