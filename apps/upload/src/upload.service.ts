@@ -16,6 +16,7 @@ export class UploadService {
          this.logger.log(`Starting upload for repo: ${data.url} with id: ${data.id}`);
     const files = await this.getRepoFiles(data.url,data.id);
     const configFileExists =  files.find(e=>path.basename(e)==='vcm.json')
+     
     if(!configFileExists){
         await fs.rm(`uploded/${data.id}`,{recursive:true,force:true},(err)=>{
           throw Error(err.message);
