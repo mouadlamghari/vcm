@@ -1,4 +1,4 @@
-simport { Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { CommonService } from './common.service';
 import { S3_SERVICE } from './s3.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
