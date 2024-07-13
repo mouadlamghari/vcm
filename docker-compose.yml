@@ -8,6 +8,13 @@ services:
         - 80:5002
       depends_on :
         - rabbitmq
+      environment:
+        BUCKET: ${BUCKET}
+        AWS_SECRET_KEY: ${AWS_SECRET_KEY}
+        AWS_ACCESS_KEY: ${AWS_ACCESS_KEY}
+        ROUTE53_HOSTED_ZONE_ID: ${ROUTE53_HOSTED_ZONE_ID}
+        domain: ${domain}
+        MONGO_URL: ${MONGO_URL}
       networks:
         - goto
   rabbitmq:
