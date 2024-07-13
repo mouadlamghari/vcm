@@ -23,4 +23,5 @@ import { Instance, InstanceSchema } from './schema/instance.schema';
   providers: [CommonService, S3_SERVICE],
   exports: [S3_SERVICE, CommonService],
 })
+  
 export class CommonModule {}
