@@ -17,6 +17,7 @@ import { Instance, InstanceSchema } from './schema/instance.schema';
       useFactory: async (configService: ConfigService) => 
         {
           console.log('MONGO_URL',configService.get<string>('MONGO_URL'))
+          console.log('envs',process.env)
           return { 
         uri: `${configService.get<string>('MONGO_URL')}`,
           }
