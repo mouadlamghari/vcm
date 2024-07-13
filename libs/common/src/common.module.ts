@@ -9,6 +9,7 @@ import { Instance, InstanceSchema } from './schema/instance.schema';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
+      envFilePath: '.env'
     }),
     MongooseModule.forFeature([{ name: Instance.name, schema: InstanceSchema }]),
     MongooseModule.forRootAsync({
