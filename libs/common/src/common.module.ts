@@ -10,13 +10,12 @@ import { Instance, InstanceSchema } from './schema/instance.schema';
     ConfigModule.forRoot({
       isGlobal: true,
     }),
-    ConfigModule.forRoot(),
     MongooseModule.forFeature([{ name: Instance.name, schema: InstanceSchema }]),
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => 
         {
-          console.log('MONGO_URL')
+          console.log('MONGO_URL',configService.get<string>('MONGO_URL'))
           return { 
         uri: `{configService.get<string>('MONGO_URL')}`,
           }
