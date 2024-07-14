@@ -9,6 +9,7 @@ import {
   ChangeResourceRecordSetsCommandInput,
   Route53Client,
 } from '@aws-sdk/client-route-53';
+import * as AWS from 'aws-sdk';
 
 type commandType = {
   installCommand?: string | null;
@@ -25,14 +26,10 @@ export class DeployService {
     private configService: ConfigService,
   ) {
     console.log(this.configService.get<string>('REGION'));
-    this.route53Client = new Route53Client({
-      region:this.configService.get<string>('REGION'),
-      credentials: {
-        accessKeyId: this.configService.get<string>('AWS_ACCESS_KEY_ID'),
-        secretAccessKey: this.configService.get<string>(
-          'AWS_SECRET_ACCESS_KEY',
-        ),
-      },
+    this.route53 = new AWS.Route53({
+      region: this.configService.get<string>('REGION'),
+      accessKeyId: this.configService.get<string>('AWS_ACCESS_KEY_ID'),
+      secretAccessKey: this.configService.get<string>('AWS_SECRET_ACCESS_KEY'),
     });
   }
 
@@ -138,9 +135,9 @@ export class DeployService {
         ],
       },
     };
-    const command = new ChangeResourceRecordSetsCommand(params);
+   // const command = new ChangeResourceRecordSetsCommand(params);
     try {
-      const response = await this.route53Client.send(command);
+      const response = await this.route53.changeResourceRecordSets(params).promise();
       return response;
     } catch (error) {
       console.error(error);
