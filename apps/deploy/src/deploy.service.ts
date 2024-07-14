@@ -24,6 +24,7 @@ export class DeployService {
     private commonService: CommonService,
     private configService: ConfigService,
   ) {
+    console.log(this.configService.get<string>('REGION'));
     this.route53Client = new Route53Client({
       region:this.configService.get<string>('REGION'),
       credentials: {
