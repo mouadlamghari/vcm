@@ -29,7 +29,6 @@ export class CommonService {
   }
 
   async uplodFile(file: string) {
-    console.log('BUCKET --------------------',this.configService.get('BUCKET'))
     const fileBody = fs.readFileSync(file);
     const item = await this.s3
       .upload({
@@ -38,6 +37,7 @@ export class CommonService {
         Bucket: this.configService.get('BUCKET'),
       })
       .promise();
+    console.log('---',item);
     return item;
   }
 
