@@ -18,14 +18,13 @@ type commandType = {
 
 @Injectable()
 export class DeployService {
-  private readonly route53Client: Route53Client;
+  private readonly route53: Route53Client;
 
   constructor(
     @Inject('S3') private s3: S3,
     private commonService: CommonService,
     private configService: ConfigService,
   ) {
-    console.log(this.configService.get<string>('REGION'));
     this.route53 = new AWS.Route53({
       region: this.configService.get<string>('REGION'),
       accessKeyId: this.configService.get<string>('AWS_ACCESS_KEY_ID'),
