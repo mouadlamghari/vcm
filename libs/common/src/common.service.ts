@@ -65,6 +65,7 @@ export class CommonService {
   }
 
   async create(project: string, subdomain: string) {
+    console.log('your',project,subdomain);
     await this.instanceModel.create({ project, subdomain });
   }
 }
