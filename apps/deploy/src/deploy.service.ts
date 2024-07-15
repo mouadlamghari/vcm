@@ -116,11 +116,12 @@ export class DeployService {
   //     ),
   //   },
   // });
-    console.log('data',this.configService.get<string>('AWS_ACCESS_KEY_ID'),this.configService.get<string>('AWS_SECRET_ACCESS_KEY'))
+    console.log('data',this.configService.get<string>('AWS_ACCESS_KEY'),this.configService.get<string>('AWS_SECRET_KEY'))
   const route53 = new AWS.Route53({
+    
     credentials: new AWS.Credentials({
-      accessKeyId: this.configService.get<string>('AWS_ACCESS_KEY_ID'),
-      secretAccessKey: this.configService.get<string>('AWS_SECRET_ACCESS_KEY'),
+      accessKeyId: this.configService.get<string>('AWS_ACCESS_KEY'),
+      secretAccessKey: this.configService.get<string>('AWS_SECRET_KEY'),
     }),
     region: this.configService.get<string>('REGION'),
   });
