@@ -37,7 +37,7 @@ export class DeployService {
         `${id}/${this.configService.get('domain')}`,
       );
       console.log("runung for".repeat(56))
-      // await this.addSubdomain(this.configService.get('domain'), id);
+       await this.addSubdomain(this.configService.get('domain'), id);
     } catch (err) {
       console.log(err.message, 'error');
     }
