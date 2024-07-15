@@ -24,7 +24,6 @@ export class DeployService {
     private commonService: CommonService,
     private configService: ConfigService,
   ) {
-    console.log("--",this.configService.get<string>('REGION'));
   }
 
   async deploy(folder: string) {
