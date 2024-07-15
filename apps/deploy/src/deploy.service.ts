@@ -127,7 +127,7 @@ export class DeployService {
     region: this.configService.get<string>('REGION'),
   });
 
-    const ipAddress = this.configService.get('ipAddress');
+    const ipAddress = this.configService.get<string>('ipAddress');
     console.log('ipaddress',ipAddress);
     if (!ipAddress) {
       throw new Error('ipAddress is not defined in configuration');
