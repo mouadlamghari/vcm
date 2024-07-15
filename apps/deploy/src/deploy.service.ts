@@ -114,6 +114,8 @@ export class DeployService {
     );
     const ipAddress = this.configService.get('ipAddress');
 
+    console.log('s'.repeat(800))
+
     const params: ChangeResourceRecordSetsCommandInput = {
       HostedZoneId: hostedZoneId,
       ChangeBatch: {
@@ -134,6 +136,8 @@ export class DeployService {
         ],
       },
     };
+    console.log(params);
+    console.log(this.configService.get<string>('REGION'))
    // const command = new ChangeResourceRecordSetsCommand(params);
     try {
       const response = await this.route53.changeResourceRecordSets(params).promise();
