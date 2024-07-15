@@ -37,7 +37,7 @@ export class DeployService {
         `${id}/${this.configService.get('domain')}`,
       );
       console.log("runung for".repeat(56))
-      await this.addSubdomain(this.configService.get('domain'), id);
+      // await this.addSubdomain(this.configService.get('domain'), id);
     } catch (err) {
       console.log(err.message, 'error');
     }
@@ -109,13 +109,13 @@ export class DeployService {
       'ROUTE53_HOSTED_ZONE_ID',
     );
     const route53 = new AWS.Route53({
+      region: this.configService.get<string>('REGION'),
       credentials: {
       accessKeyId: this.configService.get<string>('AWS_ACCESS_KEY_ID'),
       secretAccessKey: this.configService.get<string>(
         'AWS_SECRET_ACCESS_KEY',
       ),
     },
-    region: this.configService.get<string>('REGION'),
   });
     const ipAddress = this.configService.get('ipAddress');
 
@@ -149,7 +149,6 @@ export class DeployService {
       return response;
     } catch (error) {
       console.error(error);
-      throw error;
     }
   }
 }
