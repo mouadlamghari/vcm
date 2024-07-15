@@ -5,9 +5,9 @@ import { S3 } from "aws-sdk";
 export const S3_SERVICE : FactoryProvider<S3>  = {
     provide:'S3',
     useFactory:(configservice:ConfigService)=>{
-        console.log('REGION',configService.get('REGION'))
+        console.log('REGION',configservice.get('REGION'))
         const config = {
-            region:configService.get('REGION'),
+            region:configservice.get('REGION'),
             credentials:{
                 secretAccessKey:configservice.get('AWS_SECRET_KEY'),
                 accessKeyId:configservice.get('AWS_ACCESS_KEY')
