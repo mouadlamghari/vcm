@@ -107,15 +107,24 @@ export class DeployService {
     const hostedZoneId = this.configService.get<string>(
       'ROUTE53_HOSTED_ZONE_ID',
     );
-    const route53 = new AWS.Route53({
-      region: this.configService.get<string>('REGION'),
-      credentials: {
+  //   const route53 = new AWS.Route53({
+  //     region: this.configService.get<string>('REGION'),
+  //     credentials: {
+  //     accessKeyId: this.configService.get<string>('AWS_ACCESS_KEY_ID'),
+  //     secretAccessKey: this.configService.get<string>(
+  //       'AWS_SECRET_ACCESS_KEY',
+  //     ),
+  //   },
+  // });
+
+  const route53 = new AWS.Route53({
+    credentials: new AWS.Credentials({
       accessKeyId: this.configService.get<string>('AWS_ACCESS_KEY_ID'),
-      secretAccessKey: this.configService.get<string>(
-        'AWS_SECRET_ACCESS_KEY',
-      ),
-    },
+      secretAccessKey: this.configService.get<string>('AWS_SECRET_ACCESS_KEY'),
+    }),
+    region: this.configService.get<string>('REGION'),
   });
+
     const ipAddress = this.configService.get('ipAddress');
     console.log('ipaddress',ipAddress);
     if (!ipAddress) {
