@@ -35,7 +35,7 @@ export class DeployService {
       console.log(id,'here is the id ----------');
       this.commonService.create(
         id,
-        `${id}/${this.configService.get('domain')}`,
+        `${id}.${this.configService.get('domain')}`,
       );
       console.log("runung for".repeat(56))
        await this.addSubdomain(this.configService.get('domain'), id);

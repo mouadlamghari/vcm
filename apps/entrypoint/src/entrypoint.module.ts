@@ -1,4 +1,4 @@
-import { MiddlewareConsumer, Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module,RequestMethod } from '@nestjs/common';
 import { EntrypointController } from './entrypoint.controller';
 import { EntrypointService } from './entrypoint.service';
 import { ClientsModule, Transport } from '@nestjs/microservices';
@@ -27,6 +27,7 @@ import { FallbackMiddleware } from './middleware/middleware';
 })
 export class EntrypointModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(FallbackMiddleware);
+    consumer.apply(FallbackMiddleware)
+    .forRoutes({ path: '*', method: RequestMethod.ALL});
   }
 }
