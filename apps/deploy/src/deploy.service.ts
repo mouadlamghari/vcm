@@ -18,7 +18,7 @@ type commandType = {
 
 @Injectable()
 export class DeployService {
-  private readonly route53: Route53Client;
+  private readonly route53: AWS.Route53;
 
   constructor(
     @Inject('S3') private s3: S3,
