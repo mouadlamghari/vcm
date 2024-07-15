@@ -118,12 +118,10 @@ export class DeployService {
     },
   });
     const ipAddress = this.configService.get('ipAddress');
-
+    console.log('ipaddress',ipAddress);
     if (!ipAddress) {
       throw new Error('ipAddress is not defined in configuration');
     }
-
-    console.log('s'.repeat(800))
 
     const params: ChangeResourceRecordSetsCommandInput = {
       HostedZoneId: hostedZoneId,
