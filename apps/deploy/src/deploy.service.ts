@@ -26,9 +26,13 @@ export class DeployService {
     private configService: ConfigService,
   ) {
     this.route53 = new AWS.Route53({
+        credentials: {
+        accessKeyId: this.configService.get<string>('AWS_ACCESS_KEY_ID'),
+        secretAccessKey: this.configService.get<string>(
+          'AWS_SECRET_ACCESS_KEY',
+        ),
+      },
       region: this.configService.get<string>('REGION'),
-      accessKeyId: this.configService.get<string>('AWS_ACCESS_KEY_ID'),
-      secretAccessKey: this.configService.get<string>('AWS_SECRET_ACCESS_KEY'),
     });
   }
 
@@ -41,6 +45,7 @@ export class DeployService {
         id,
         `${id}/${this.configService.get('domain')}`,
       );
+      console.log("runung for".repeat(56))
       await this.addSubdomain(this.configService.get('domain'), id);
     } catch (err) {
       console.log(err.message, 'error');
