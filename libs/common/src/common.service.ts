@@ -37,7 +37,6 @@ export class CommonService {
         Bucket: this.configService.get('BUCKET'),
       })
       .promise();
-    console.log('---',item);
     return item;
   }
 
@@ -60,7 +59,6 @@ export class CommonService {
         Key,
       })
       .promise();
-    console.log('-----',content)
     return content;
   }
 

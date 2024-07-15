@@ -16,6 +16,7 @@ services:
         domain: ${domain}
         MONGO_URL: ${MONGO_URL}
         REGION: ${REGION}
+        ipAddress: ${ipAddress}
       networks:
         - goto
   rabbitmq:
