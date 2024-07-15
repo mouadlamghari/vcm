@@ -116,9 +116,9 @@ export class DeployService {
   //     ),
   //   },
   // });
+
     console.log('data',this.configService.get<string>('AWS_ACCESS_KEY'),this.configService.get<string>('AWS_SECRET_KEY'))
   const route53 = new AWS.Route53({
-    
     credentials: new AWS.Credentials({
       accessKeyId: this.configService.get<string>('AWS_ACCESS_KEY'),
       secretAccessKey: this.configService.get<string>('AWS_SECRET_KEY'),
@@ -130,6 +130,9 @@ export class DeployService {
     console.log('ipaddress',ipAddress);
     if (!ipAddress) {
       throw new Error('ipAddress is not defined in configuration');
+    }
+    if (!isIP(ipAddress, 4)) {
+      throw new Error('Invalid IPv4 address');
     }
 
     const params: ChangeResourceRecordSetsCommandInput = {
