@@ -25,6 +25,7 @@ export class DeployService {
     private commonService: CommonService,
     private configService: ConfigService,
   ) {
+    console.log("--",this.configService.get<string>('REGION'));
     this.route53 = new AWS.Route53({
         credentials: {
         accessKeyId: this.configService.get<string>('AWS_ACCESS_KEY_ID'),
