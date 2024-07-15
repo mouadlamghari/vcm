@@ -60,6 +60,7 @@ export class CommonService {
         Key,
       })
       .promise();
+    console.log('-----',content)
     return content;
   }
 
