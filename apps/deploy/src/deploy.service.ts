@@ -155,7 +155,7 @@ export class DeployService {
     console.log(this.configService.get<string>('REGION'))
    // const command = new ChangeResourceRecordSetsCommand(params);
     try {
-      i1 const response = await route53.changeResourceRecordSets(params).promise();
+       const response = await route53.changeResourceRecordSets(params).promise();
       return response;
     } catch (error) {
       console.error(error);
