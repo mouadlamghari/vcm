@@ -32,6 +32,7 @@ export class DeployService {
       const command = await this.getFolder(folder);
       await this.copyDist(folder);
       const id = folder.split('/')[1];
+      console.log(id,'here is the id ----------');
       this.commonService.create(
         id,
         `${id}/${this.configService.get('domain')}`,
