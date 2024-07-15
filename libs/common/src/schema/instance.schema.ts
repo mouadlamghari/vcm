@@ -13,7 +13,7 @@ export class Instance {
   domain: string;
 
   @Prop()
-  subdomain: number;
+  subdomain: string;
 }
 
 export const InstanceSchema = SchemaFactory.createForClass(Instance);

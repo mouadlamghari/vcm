@@ -18,7 +18,6 @@ type commandType = {
 
 @Injectable()
 export class DeployService {
-  private readonly route53: AWS.Route53;
 
   constructor(
     @Inject('S3') private s3: S3,
@@ -26,15 +25,6 @@ export class DeployService {
     private configService: ConfigService,
   ) {
     console.log("--",this.configService.get<string>('REGION'));
-    this.route53 = new AWS.Route53({
-        credentials: {
-        accessKeyId: this.configService.get<string>('AWS_ACCESS_KEY_ID'),
-        secretAccessKey: this.configService.get<string>(
-          'AWS_SECRET_ACCESS_KEY',
-        ),
-      },
-      region: this.configService.get<string>('REGION'),
-    });
   }
 
   async deploy(folder: string) {
@@ -118,6 +108,15 @@ export class DeployService {
     const hostedZoneId = this.configService.get<string>(
       'ROUTE53_HOSTED_ZONE_ID',
     );
+    const route53 = new AWS.Route53({
+      credentials: {
+      accessKeyId: this.configService.get<string>('AWS_ACCESS_KEY_ID'),
+      secretAccessKey: this.configService.get<string>(
+        'AWS_SECRET_ACCESS_KEY',
+      ),
+    },
+    region: this.configService.get<string>('REGION'),
+  });
     const ipAddress = this.configService.get('ipAddress');
 
     console.log('s'.repeat(800))
@@ -146,7 +145,7 @@ export class DeployService {
     console.log(this.configService.get<string>('REGION'))
    // const command = new ChangeResourceRecordSetsCommand(params);
     try {
-      const response = await this.route53.changeResourceRecordSets(params).promise();
+      const response = await route53.changeResourceRecordSets(params).promise();
       return response;
     } catch (error) {
       console.error(error);
