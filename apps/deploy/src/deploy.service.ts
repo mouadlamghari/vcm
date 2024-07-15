@@ -116,7 +116,7 @@ export class DeployService {
   //     ),
   //   },
   // });
-
+    console.log('data',this.configService.get<string>('AWS_ACCESS_KEY_ID'),this.configService.get<string>('AWS_SECRET_ACCESS_KEY'))
   const route53 = new AWS.Route53({
     credentials: new AWS.Credentials({
       accessKeyId: this.configService.get<string>('AWS_ACCESS_KEY_ID'),
