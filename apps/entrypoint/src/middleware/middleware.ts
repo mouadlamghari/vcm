@@ -37,7 +37,7 @@ export class FallbackMiddleware implements NestMiddleware {
         return res.send(content.Body);
       } else {
         const content = await this.commonService.getObject(
-          'vcm',
+          'vcm2',
           `uploded/${instance.project}/dist${reqPath}`,
         );
         res.set('Content-Type', contentType || '');
