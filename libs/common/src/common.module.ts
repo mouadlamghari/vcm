@@ -1,10 +1,11 @@
-import { Module } from '@nestjs/common';
+import { Module , Global } from '@nestjs/common';
 import { CommonService } from './common.service';
 import { S3_SERVICE } from './s3.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Instance, InstanceSchema } from './schema/instance.schema';
 
+@Global()
 @Module({
   imports: [
     ConfigModule.forRoot({
