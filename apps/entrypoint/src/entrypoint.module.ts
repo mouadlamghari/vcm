@@ -23,7 +23,7 @@ import { FallbackMiddleware } from './middleware/middleware';
     ]),
   ],
   controllers: [EntrypointController],
-  providers: [EntrypointService,CommonService],
+  providers: [EntrypointService],
 })
   
 export class EntrypointModule {
