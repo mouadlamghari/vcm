@@ -7,6 +7,7 @@ import { FallbackMiddleware } from './middleware/middleware';
 
 @Module({
   imports: [
+    CommonModule,
     ClientsModule.register([
       {
         name: 'UPLOAD',
@@ -19,7 +20,6 @@ import { FallbackMiddleware } from './middleware/middleware';
           },
         },
       },
-      CommonModule,
     ]),
   ],
   controllers: [EntrypointController],
