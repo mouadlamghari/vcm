@@ -10,6 +10,7 @@ export class FallbackMiddleware implements NestMiddleware {
   constructor(private commonService: CommonService) {}
 
   async use(req: Request, res: Response, next: NextFunction) {
+    console.log('-----------------------')
     if (!req.originalUrl.match('/') && req.method !== 'POST') {
       const { hostname } = req;
       const instance = await this.commonService.findOne(hostname);
@@ -17,7 +18,7 @@ export class FallbackMiddleware implements NestMiddleware {
       const contentType = mime.lookup(reqPath);
 
       const object = await this.commonService.getObject(
-        'vcm',
+        'vcm2',
         `${instance.project}/vcm.json`,
       );
       const json = JSON.parse(object.Body.toString());
@@ -28,7 +29,7 @@ export class FallbackMiddleware implements NestMiddleware {
 
       if (isRouteMatch) {
         const content = await this.commonService.getObject(
-          'vcm',
+          'vcm2',
           path.join(`uploded/${instance.project}/dist`, 'index.html'),
         );
         res.set('Content-Type', 'text/html');
