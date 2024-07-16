@@ -10,7 +10,7 @@ export class FallbackMiddleware implements NestMiddleware {
   constructor(private commonService: CommonService) {}
 
   async use(req: Request, res: Response, next: NextFunction) {
-    if (!req.originalUrl.match('/') && req.method == 'POST') {
+    if (!req.originalUrl.match('/') && req.method !== 'POST') {
       const { hostname } = req;
       const instance = await this.commonService.findOne(hostname);
       const reqPath = req.path;
