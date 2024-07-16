@@ -25,6 +25,7 @@ import { FallbackMiddleware } from './middleware/middleware';
   controllers: [EntrypointController],
   providers: [EntrypointService,CommonService],
 })
+  
 export class EntrypointModule {
   configure(consumer: MiddlewareConsumer) {
     consumer.apply(FallbackMiddleware)
