@@ -2,7 +2,7 @@ import { MiddlewareConsumer, Module,RequestMethod } from '@nestjs/common';
 import { EntrypointController } from './entrypoint.controller';
 import { EntrypointService } from './entrypoint.service';
 import { ClientsModule, Transport } from '@nestjs/microservices';
-import { CommonModule } from '@app/common';
+import { CommonModule ,CommonService} from '@app/common';
 import { FallbackMiddleware } from './middleware/middleware';
 
 @Module({
