@@ -144,7 +144,7 @@ export class DeployService {
           {
             Action: 'CREATE',
             ResourceRecordSet: {
-              Name: `http://${subdomain}.${domain}`,
+              Name: `${subdomain}.${domain}`,
               Type: 'A',
               TTL: 300,
               ResourceRecords: [
