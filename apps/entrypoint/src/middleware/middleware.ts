@@ -17,7 +17,7 @@ export class FallbackMiddleware implements NestMiddleware {
       const instance = await this.commonService.findOne(hostname);
       const reqPath = req.path;
       const contentType = mime.lookup(reqPath);
-      console.log(hostname,instance,repPath,contentType);
+      console.log(hostname,instance,reqPath,contentType);
       const object = await this.commonService.getObject(
         'vcmc',
         `${instance.project}/vcm.json`,
