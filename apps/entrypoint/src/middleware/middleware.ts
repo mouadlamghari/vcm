@@ -20,7 +20,7 @@ export class FallbackMiddleware implements NestMiddleware {
       console.log(hostname,instance,reqPath,contentType);
       const object = await this.commonService.getObject(
         'vcmc',
-        `${instance.project}/vcm.json`,
+        `uploded/${instance.project}/vcm.json`,
       );
       const json = JSON.parse(object.Body.toString());
 
