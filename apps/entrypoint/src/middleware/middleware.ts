@@ -19,7 +19,7 @@ export class FallbackMiddleware implements NestMiddleware {
       const contentType = mime.lookup(reqPath);
 
       const object = await this.commonService.getObject(
-        'vcm2',
+        'vcmc',
         `${instance.project}/vcm.json`,
       );
       const json = JSON.parse(object.Body.toString());
@@ -30,14 +30,14 @@ export class FallbackMiddleware implements NestMiddleware {
 
       if (isRouteMatch) {
         const content = await this.commonService.getObject(
-          'vcm2',
+          'vcmc',
           path.join(`uploded/${instance.project}/dist`, 'index.html'),
         );
         res.set('Content-Type', 'text/html');
         return res.send(content.Body);
       } else {
         const content = await this.commonService.getObject(
-          'vcm2',
+          'vcmc',
           `uploded/${instance.project}/dist${reqPath}`,
         );
         res.set('Content-Type', contentType || '');
