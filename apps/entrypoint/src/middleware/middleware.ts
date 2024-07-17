@@ -17,12 +17,14 @@ export class FallbackMiddleware implements NestMiddleware {
       const instance = await this.commonService.findOne(hostname);
       const reqPath = req.path;
       const contentType = mime.lookup(reqPath);
-
+      console.log(hostname,instance);
       const object = await this.commonService.getObject(
         'vcmc',
         `${instance.project}/vcm.json`,
       );
       const json = JSON.parse(object.Body.toString());
+
+      console.log(json);
 
       const isRouteMatch = json.routes.some((route) =>
         new RegExp(route.src).test(req.originalUrl),
