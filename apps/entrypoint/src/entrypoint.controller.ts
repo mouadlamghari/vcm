@@ -8,7 +8,6 @@ export class EntrypointController {
 
   @Post('/deploy')
   deploy(@Body() UploadBody:createUpdate){
-    console.log('deploying')
     return this.entrypointService.deploy(UploadBody.repoUrl);
   }
   @Post('/web')

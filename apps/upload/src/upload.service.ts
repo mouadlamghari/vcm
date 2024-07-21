@@ -28,7 +28,6 @@ export class UploadService {
            this.logger.log(`Uploading file: ${files}`);
     await Promise.all(files.map(async(file)=>await this.commonService.uplodFile(file)))
     .then((e)=>{
-       console.log('im gonna send now')
       this.rabbitClient.emit('deploy',`uploded/${data?.id}`)})
        return 'Hello World!';
   }
