@@ -52,6 +52,7 @@ jobs:
         script: |
           cd vcm
           git pull origin main
+          docker-compose down
           docker pull mouadl342/vcm:latest
-          docker compose pull
-          docker compose  up -d --build 
+          docker-compose up -d --build
+          docker image prune -f
