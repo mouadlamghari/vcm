@@ -11,7 +11,8 @@ export class FallbackMiddleware implements NestMiddleware {
 
   async use(req: Request, res: Response, next: NextFunction) {
     console.log(req.hostname,'hostname')
-    if (req.originalUrl!=='/deploy' && req.method !== 'POST') {
+    console.log('muiuiuiuiuiuiuiuiuiuiuiuiuiuiuiuiuiuiuiui')
+    if (req.hostname!=='www.infinitehost.online') {
       const { hostname } = req;
       console.log(hostname,'hostname')
       const instance = await this.commonService.findOne(hostname);

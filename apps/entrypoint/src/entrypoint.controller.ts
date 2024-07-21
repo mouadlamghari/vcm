@@ -11,4 +11,8 @@ export class EntrypointController {
     console.log('deploying')
     return this.entrypointService.deploy(UploadBody.repoUrl);
   }
+  @Post('/web')
+  deploy(){
+    console.log('hihihihihihihihih')
+  }
 }
