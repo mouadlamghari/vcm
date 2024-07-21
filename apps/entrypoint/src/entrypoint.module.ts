@@ -28,7 +28,6 @@ import { FallbackMiddleware } from './middleware/middleware';
   
 export class EntrypointModule {
   configure(consumer: MiddlewareConsumer) {
-    console.log('Applying FallbackMiddleware');
     consumer.apply(FallbackMiddleware)
     .forRoutes({ path: '*', method: RequestMethod.ALL});
   }

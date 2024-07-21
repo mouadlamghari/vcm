@@ -10,22 +10,17 @@ export class FallbackMiddleware implements NestMiddleware {
   constructor(private commonService: CommonService) {}
 
   async use(req: Request, res: Response, next: NextFunction) {
-    console.log('-----------------------')
-    console.log(req.originalUrl,req.method,req.originalUrl.match('/'),!req.originalUrl.match('/') && req.method !== 'POST');
     if (req.originalUrl!=='/deploy' && req.method !== 'POST') {
       const { hostname } = req;
+      console.log(hostname,'hostname')
       const instance = await this.commonService.findOne(hostname);
       const reqPath = req.path;
       const contentType = mime.lookup(reqPath);
-      console.log(hostname,instance,reqPath,contentType);
       const object = await this.commonService.getObject(
         'vcmc',
         `uploded/${instance.project}/vcm.json`,
       );
       const json = JSON.parse(object.Body.toString());
-
-      console.log(json);
-
       const isRouteMatch = json.routes.some((route) =>
         new RegExp(route.src).test(req.originalUrl),
       );
