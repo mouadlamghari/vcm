@@ -5,13 +5,16 @@ import { ConfigService } from "@nestjs/config";
 import { InjectModel } from '@nestjs/mongoose';
 import { Instance, InstanceDocument } from './schema/instance.schema';
 import { Model } from 'mongoose';
-
+import { User, UserDocument } from './schema/User.schema';
+import { Repo, RepoDocument } from './schema/repo.schema';
 @Injectable()
 export class CommonService {
   constructor(
     @Inject('S3') private s3: S3,
     private configService: ConfigService,
     @InjectModel(Instance.name) private instanceModel: Model<InstanceDocument>,
+    @InjectModel(User.name) private userModel: Model<UserDocument>,
+    @InjectModel(Repo.name) private repoModel: Model<RepoDocument>,
   ) {}
 
   getAllFiles(path: string) {
