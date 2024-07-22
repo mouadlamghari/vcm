@@ -17,6 +17,8 @@ services:
         MONGO_URL: ${MONGO_URL}
         REGION: ${REGION}
         ipAddress: ${ipAddress}
+        GITHUB_CLIENT_ID: ${GITHUB_CLIENT_ID}
+        GITHUB_CLIENT_SECRET: ${GITHUB_CLIENT_SECRET}
       networks:
         - goto
   rabbitmq:
