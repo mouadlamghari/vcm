@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Inject, Injectable,HttpException, HttpStatus } from '@nestjs/common';
 import { S3 } from 'aws-sdk';
 import * as fs from 'fs'
 import { ConfigService } from "@nestjs/config";
