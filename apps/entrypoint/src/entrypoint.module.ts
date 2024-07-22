@@ -6,7 +6,7 @@ import { CommonModule ,CommonService} from '@app/common';
 import { FallbackMiddleware } from './middleware/middleware';
 import { PassportModule } from '@nestjs/passport';
 import { GitHubStrategy } from './strategy/github.strategy';
-import { ReposController } from './repo/repo';
+import { ReposController } from './repo/RepoController';
 import { WebhooksController } from './webhook/webhook';
 import { AuthController } from './auth/AuthController';
 

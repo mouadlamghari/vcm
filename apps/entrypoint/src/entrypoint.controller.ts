@@ -10,9 +10,9 @@ export class EntrypointController {
 
   @UseGuards(AuthGuard('github'))
   @Post('/deploy')
-  deploy(@Req() req: Request, @Body() uploadBody: createUpdate){
+  deploy(@Req() req: any, @Body() uploadBody: createUpdate){
     const user = req?.user;
-    return this.entrypointService.deploy(UploadBody.repoUrl,user);
+    return this.entrypointService.deploy(uploadBody.repoUrl,user);
   }
   @Post('/web')
   web(){
