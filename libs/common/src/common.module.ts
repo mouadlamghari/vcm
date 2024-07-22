@@ -4,7 +4,8 @@ import { S3_SERVICE } from './s3.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Instance, InstanceSchema } from './schema/instance.schema';
-
+import { User, UserSchema } from './schema/User.schema';
+import { Repo, RepoSchema } from './schema/repo.schema';
 @Global()
 @Module({
   imports: [
