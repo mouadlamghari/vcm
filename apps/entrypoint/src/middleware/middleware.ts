@@ -10,7 +10,7 @@ export class FallbackMiddleware implements NestMiddleware {
   constructor(private commonService: CommonService) {}
 
   async use(req: Request, res: Response, next: NextFunction) {
-    console.log(req.hostname,'hostname')
+    console.log('hostname',req.hostname)
     console.log('8'.repeat(80))
     if (req.hostname!='infinitehost.online') {
       const { hostname } = req;
