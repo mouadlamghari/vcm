@@ -8,6 +8,8 @@ import { PassportModule } from '@nestjs/passport';
 import { GitHubStrategy } from './strategy/github.strategy';
 import { ReposController } from './repo/repo';
 import { WebhooksController } from './webhook/webhook';
+import { AuthController } from './auth/AuthController';
+
 @Module({
   imports: [
     CommonModule,
@@ -26,7 +28,7 @@ import { WebhooksController } from './webhook/webhook';
       },
     ]),
   ],
-  controllers: [EntrypointController,ReposController,WebhooksController],
+  controllers: [EntrypointController,ReposController,AuthController,WebhooksController],
   providers: [EntrypointService,GitHubStrategy],
 })
   
