@@ -4,10 +4,14 @@ import { EntrypointService } from './entrypoint.service';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { CommonModule ,CommonService} from '@app/common';
 import { FallbackMiddleware } from './middleware/middleware';
-
+import { PassportModule } from '@nestjs/passport';
+import { GitHubStrategy } from './strategy/github.strategy';
+import { ReposController } from './repo/repo';
+import { WebhooksController } from './webhook/webhook';
 @Module({
   imports: [
     CommonModule,
+    PassportModule,
     ClientsModule.register([
       {
         name: 'UPLOAD',
@@ -22,8 +26,8 @@ import { FallbackMiddleware } from './middleware/middleware';
       },
     ]),
   ],
-  controllers: [EntrypointController],
-  providers: [EntrypointService],
+  controllers: [EntrypointController,ReposController,WebhooksController],
+  providers: [EntrypointService,GitHubStrategy],
 })
   
 export class EntrypointModule {

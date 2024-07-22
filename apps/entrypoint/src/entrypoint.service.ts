@@ -6,9 +6,9 @@ export class EntrypointService {
 
   constructor(@Inject('UPLOAD') private RabbitClient: ClientProxy ){}
 
-  deploy(url:string) {
+  deploy(url:string,user:any) {
     const id = this.generate(4);
-    this.RabbitClient.emit('upload',{id,url});
+    this.RabbitClient.emit('upload',{id,url,user});
     return id;
   }
 

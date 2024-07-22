@@ -12,7 +12,11 @@ import { Instance, InstanceSchema } from './schema/instance.schema';
       isGlobal: true,
       envFilePath: '.env'
     }),
-    MongooseModule.forFeature([{ name: Instance.name, schema: InstanceSchema }]),
+    MongooseModule.forFeature([
+      { name: Instance.name, schema: InstanceSchema },
+      { name: User.name, schema: UserSchema },
+      { name: Repo.name, schema: RepoSchema },
+    ]),
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => 

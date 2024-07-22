@@ -65,4 +65,33 @@ export class CommonService {
   async create(project: string, subdomain: string) {
     await this.instanceModel.create({ project, subdomain });
   }
+
+  async getOrCreateUser(data: any) {
+    const { githubId, username, avatarUrl, accessToken } = data;
+    let user = await this.userModel.findOne({
+      githubId,
+    });
+    if (!user) {
+      user = await this.userModel.create({ ...data });
+    }
+    return user;
+  }
+
+  async createProject(data: any) {
+    try {
+      const project = await this.repoModel.create({
+        repo: data.repo,
+        owner: data.id,
+      });
+      return project;
+    } catch (error) {
+      throw new HttpException(
+        {
+          status: HttpStatus.INTERNAL_SERVER_ERROR,
+          message: error.message,
+        },
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
+    }
+  }
 }

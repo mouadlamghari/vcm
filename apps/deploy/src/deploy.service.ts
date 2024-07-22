@@ -32,11 +32,11 @@ export class DeployService {
       const command = await this.getFolder(folder);
       await this.copyDist(folder);
       const id = folder.split('/')[1];
-      console.log(id,'here is the id ----------');
       this.commonService.create(
         id,
         `${id}.${this.configService.get('domain')}`,
       );
+      
       console.log("runung for".repeat(56))
        await this.addSubdomain(this.configService.get('domain'), id);
     } catch (err) {
@@ -119,7 +119,6 @@ export class DeployService {
   //   },
   // });
 
-    console.log('data',this.configService.get<string>('AWS_ACCESS_KEY'),this.configService.get<string>('AWS_SECRET_KEY'));
   const route53 = new AWS.Route53({
     credentials: new AWS.Credentials({
       accessKeyId: this.configService.get<string>('AWS_ACCESS_KEY'),

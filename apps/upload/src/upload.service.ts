@@ -28,6 +28,7 @@ export class UploadService {
            this.logger.log(`Uploading file: ${files}`);
     await Promise.all(files.map(async(file)=>await this.commonService.uplodFile(file)))
     .then((e)=>{
+      this.commonService.createProject({owner:data.user.username,repo:data.url})
       this.rabbitClient.emit('deploy',`uploded/${data?.id}`)})
        return 'Hello World!';
   }

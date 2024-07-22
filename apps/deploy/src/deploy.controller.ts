@@ -8,7 +8,6 @@ export class DeployController {
 
   @EventPattern('deploy')
   deploy(@Payload() url:string){
-    console.log('here',url)
     this.deployService.deploy(url)
   }
 }
