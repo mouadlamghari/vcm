@@ -14,6 +14,7 @@ export class AuthController {
   @UseGuards(AuthGuard('github'))
   async githubCallback(@Req() req, @Res() res) {
     // handles the GitHub OAuth2 callback
+    console.log(req,res);
     res.redirect(`/home`);
   }
 }
