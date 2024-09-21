@@ -14,7 +14,6 @@ export class AuthController {
   @UseGuards(AuthGuard('github'))
   async githubCallback(@Req() req, @Res() res) {
     // handles the GitHub OAuth2 callback
-    console.log(req,res);
     res.cookie('access_token', req.user.accessToken, {
       httpOnly: true,    // Prevent JavaScript from accessing the cookie
       secure: true,      // Use HTTPS in production
