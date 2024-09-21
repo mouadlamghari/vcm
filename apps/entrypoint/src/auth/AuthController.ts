@@ -15,8 +15,15 @@ export class AuthController {
   async githubCallback(@Req() req, @Res() res) {
     // handles the GitHub OAuth2 callback
     console.log(req,res);
-    return {name:'mouad'};
-    
+    res.cookie('access_token', req.user.accessToken, {
+      httpOnly: true,    // Prevent JavaScript from accessing the cookie
+      secure: true,      // Use HTTPS in production
+      sameSite: 'lax',   // Protect against CSRF
+      maxAge: 3600000,   // 1 hour expiry
+    });
+  
+    res.redirect('/home');
+
     // res.redirect(`/home`);
   }
 }
