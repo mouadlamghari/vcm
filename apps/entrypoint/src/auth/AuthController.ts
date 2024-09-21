@@ -16,6 +16,7 @@ export class AuthController {
     // handles the GitHub OAuth2 callback
     console.log(req,res);
     return {name:'mouad'};
+    
     // res.redirect(`/home`);
   }
 }
