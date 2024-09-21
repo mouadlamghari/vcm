@@ -15,6 +15,7 @@ export class AuthController {
   async githubCallback(@Req() req, @Res() res) {
     // handles the GitHub OAuth2 callback
     console.log(req,res);
-    res.redirect(`/home`);
+    return {name:'mouad'};
+    // res.redirect(`/home`);
   }
 }
