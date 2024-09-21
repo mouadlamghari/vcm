@@ -3,13 +3,13 @@ import { EntrypointService } from './entrypoint.service';
 import createUpdate from './dto/upload.dto';
 import { AuthGuard } from '@nestjs/passport';
 import { Request } from 'express';
-import {GithubAuthGuard} from './Guard/GithubAuthGuard.guard'
+
 
 @Controller()
 export class EntrypointController {
   constructor(private readonly entrypointService: EntrypointService) {}
 
-  @UseGuards(GithubAuthGuard)
+  @UseGuards(AuthGuard('github'))
   @Post('/deploy')
   deploy(@Req() req: any, @Body() uploadBody: createUpdate){
     const user = req?.user;
